@@ -9,7 +9,8 @@ import {
 } from '@aiostreams/types';
 import { parseFilename } from '@aiostreams/parser';
 import { getTextHash, serviceDetails, Settings } from '@aiostreams/utils';
-import { fetch as uFetch, ProxyAgent } from 'undici';
+// remove this line for cfw
+//import { fetch as uFetch, ProxyAgent } from 'undici';
 import { emojiToLanguage, codeToLanguage } from '@aiostreams/formatters';
 
 export class BaseWrapper {
