@@ -15,7 +15,9 @@ import {
   createLogger,
   maskSensitiveInfo,
 } from '@aiostreams/utils';
+/* EDIT: removed for cfw
 import { fetch as uFetch, ProxyAgent } from 'undici';
+*/
 import { emojiToLanguage, codeToLanguage } from '@aiostreams/formatters';
 
 const logger = createLogger('wrappers');
@@ -175,9 +177,15 @@ export class BaseWrapper {
       `Request Headers: ${maskSensitiveInfo(JSON.stringify(Object.fromEntries(this.headers)))}`
     );
 
+/* EDIT: modified for cfw
     let response = useProxy
       ? uFetch(url, {
+*/
+    let response = useProxy
+      ? fetch(url, {
+/* EDIT: removed for cfw
           dispatcher: new ProxyAgent(Settings.ADDON_PROXY),
+*/
           method: 'GET',
           headers: this.headers,
           signal: AbortSignal.timeout(this.indexerTimeout),
