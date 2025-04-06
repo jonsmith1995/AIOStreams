@@ -14,7 +14,9 @@ import {
   Settings,
   createLogger,
 } from '@aiostreams/utils';
+/* remove for cfw
 import { fetch as uFetch, ProxyAgent } from 'undici';
+*/
 import { emojiToLanguage, codeToLanguage } from '@aiostreams/formatters';
 
 const logger = createLogger('wrappers');
@@ -156,9 +158,15 @@ export class BaseWrapper {
       }`
     );
 
+/* modified below for cfw
     let response = useProxy
       ? uFetch(url, {
+*/
+    let response = useProxy
+      ? fetch(url, {
+/* remove for cfw
           dispatcher: new ProxyAgent(Settings.ADDON_PROXY),
+*/
           method: 'GET',
           headers: headers,
           signal: AbortSignal.timeout(this.indexerTimeout),
